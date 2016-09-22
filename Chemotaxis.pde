@@ -12,9 +12,10 @@ boolean userClicked=false;
  	if (userClicked==true)
  	{
  		fill (0);
- 		ellipse(mouseX, mouseY, 10, 10);
- 		//predX=mouseX;
- 		//predY=mouseY;
+ 		int predX[]=(int)(mouseX);
+ 		int predY[]=(int)(mouseY);
+ 		ellipse(predX[1], predY[1], 10, 10);
+
  		one.move();
  	}
  	one.show();
@@ -27,14 +28,15 @@ boolean userClicked=false;
 
  class Bacteria    
  {     
-	int theX, theY, theSize, walkX, walkY;
+	int theX, theY, theSize, walkX, walkY, walkR;
 	Bacteria(int x, int y)
 	{
 		theX = x;
 		theY = y;
 		theSize = 50;
-		walkX = (mouseX-theX)/100;
-		walkY = (mouseY-theY)/200;
+		walkR = (int)(Math.random()*5);
+		walkX = (mouseX-theX)*walkR/1000;
+		walkY = (mouseY-theY)*walkR/1000;
 	}
 
 	void show()
