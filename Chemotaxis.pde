@@ -1,42 +1,36 @@
-boolean userClicked=false;
-//int predX, predY;
- Bacteria one = new Bacteria (400, 400);
- void setup()   
+Bacteria [] one;
+void setup()   
  {     
  	size(800, 800);
+ 	one=new Bacteria[10];
+ 	for (int i=0; i<one.length ;i++)
+ 	{
+ 		one[i]=new Bacteria();
+ 	}
  }  
 
  void draw()   
  {    
  	background(255,255,255);
- 	if (userClicked==true)
+ 	for (int i=0; i<one.length; i++)
  	{
- 		fill (0);
- 		int predX[]=(int)(mouseX);
- 		int predY[]=(int)(mouseY);
- 		ellipse(predX[1], predY[1], 10, 10);
-
- 		one.move();
+ 		one[i].move();
+ 		one[i].show();
  	}
- 	one.show();
+
  } 
 
- void mousePressed()
- {
- 	userClicked=true;
- }
 
  class Bacteria    
  {     
-	int theX, theY, theSize, walkX, walkY, walkR;
-	Bacteria(int x, int y)
+	int theX, theY, theSize, theColor, walkX, walkY;
+	Bacteria()
 	{
-		theX = x;
-		theY = y;
+		theX=50;
+		theY=100;
 		theSize = 50;
-		walkR = (int)(Math.random()*5);
-		walkX = (mouseX-theX)*walkR/1000;
-		walkY = (mouseY-theY)*walkR/1000;
+		walkX = (int)(Math.random()*10-5);
+		walkY = (int)(Math.random()*10-5);
 	}
 
 	void show()
@@ -47,8 +41,8 @@ boolean userClicked=false;
 
 	void move()
 	{
-		theX = theX + walkX;
-		theY = theY + walkY;
+		theX = theX + (int)(Math.random()*10-5);
+		theY = theY + (int)(Math.random()*10-5);
 	}
 
  }    
