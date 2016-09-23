@@ -17,25 +17,27 @@ void setup()
  		one[i].move();
  		one[i].show();
  	}
-
  } 
-
 
  class Bacteria    
  {     
-	int theX, theY, theSize, theColor, walkX, walkY;
+	int theX, theY, theSize, theColor, theRed, theGreen, theBlue, walkX, walkY;
 	Bacteria()
 	{
-		theX=50;
-		theY=100;
-		theSize = 50;
+		theX=400;
+		theY=400;
+		theRed = (int)(Math.random()*255);
+		theGreen = (int)(Math.random()*255);
+		theBlue = (int)(Math.random()*255);
+		theColor=color(theRed, theGreen, theBlue);
+		theSize = (int)(Math.random()*50);
 		walkX = (int)(Math.random()*10-5);
 		walkY = (int)(Math.random()*10-5);
 	}
 
 	void show()
 	{
-		fill(0);
+		fill(theColor);
 		ellipse(theX, theY, theSize, theSize);
 	} 
 
